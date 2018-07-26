@@ -1,5 +1,9 @@
 # N-Gram-Google-Auto-Completion-
-using docker (container) Hadoop
+using docker (container) Hadoop and mapreduce as the method.
+
+Please check final step file to find the result, I made some Screenshots  under final_step/running_step
+
+
 
 
 * Construct N-Gram Library from the dimensional data set, build a language model based on statistical probability, generate data, and put it into the database.
@@ -31,7 +35,7 @@ Then turn on the docker and hadoop in terminal:
 15, cd N-Gram-Google-Auto-Completion
 set input file
 16, hdfs dfs -mkdir -p input
-17, hdfs dfs -put bookList/*  input/ 
+17, hdfs dfs -put bookList/*  input/  //There are another booklist1 have about 4500 files, if you have time, feel free to use booklist1 instead of bookList, but they are doing the same job basically
 18, cd src/main/java
 
 Before Run and compile:
