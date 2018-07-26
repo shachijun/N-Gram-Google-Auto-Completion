@@ -48,13 +48,12 @@ Before Run and compile:
 
 19, vi Driver.java
 20, Chaging following:
-DBConfiguration.configureDB(conf2,
- "com.mysql.jdbc.Driver", 
- "jdbc:mysql://192.168.1.2:8889/test", // change this line with yourip:port/DatabaseName
- "root", // user name
- “root”); //password
-
-job2.addArchiveToClassPath(new Path(“The connetcor”));//change this as the connector you use for connecting the databse in step 11 namely /mysql/ConnectorFileName
+     DBConfiguration.configureDB(conf2,
+       "com.mysql.jdbc.Driver", 
+       "jdbc:mysql://192.168.1.2:8889/test", // change this line with yourip:port/DatabaseName
+       "root", // user name
+       “root”); //password
+     job2.addArchiveToClassPath(new Path(“The connetcor”));//change this as the connector you use for connecting the databse in step 11 namely /mysql/ConnectorFileName
 
 compile and run the code:
 21, hadoop com.sun.tools.javac.Main *.java
