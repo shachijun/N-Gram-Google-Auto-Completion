@@ -15,7 +15,10 @@ Require database, hadoop and docker
 
 1, find the ip address
 
+
+
 SECOND Create Database
+
 2, in terminal find database file and ./mysql -uroot -p (then input the database password)
 Type following in terminal:
 3, create database test(Name);
@@ -24,7 +27,9 @@ Type following in terminal:
 6, GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root(my local database password)' WITH GRANT OPTION; 
 7, FLUSH PRIVILEGES;
 
+
 Then turn on the docker and hadoop in terminal:
+
 8, ./start-container.sh //(find where it locate)
 9, ./start-hadoop.sh 
 10, cd src
@@ -38,7 +43,9 @@ set input file
 17, hdfs dfs -put bookList/*  input/  //There are another booklist1 have about 4500 files, if you have time, feel free to use booklist1 instead of bookList, but they are doing the same job basically
 18, cd src/main/java
 
+
 Before Run and compile:
+
 19, vi Driver.java
 20, Chaging following:
 DBConfiguration.configureDB(conf2,
