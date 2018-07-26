@@ -1,4 +1,4 @@
-# N-Gram-Google-Auto-Completion-
+# N-Gram-Google-Auto-Completion
 using docker (container) Hadoop and mapreduce as the method.
 
 Please check final step file to find the result, I made some Screenshots  under final_step/running_step
