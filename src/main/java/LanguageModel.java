@@ -56,28 +56,24 @@ public class LanguageModel {
 		public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 			//reverse order
 			TreeMap <Integer,List<String>> tm = new TreeMap <Integer,List<String>>(Collections.<Integer>reverseOrder());
-			for (Text val : values){
+			for (Text val : values) {
 				//val: data =  10
 				String value = val.toString().trim();
 				String word = value.split("=")[0].trim();
-				int count = Integer.parseInt( value.split(" ")[1].trim());
-				if (tm.containsKey(count)){
-				    tm.get(count).add(word);
-                }else {
-                    List <String> list =  new ArrayList<String>();
-                    list.add(word);
-                    tm.put(count,list);
-                }
-                Iterator<Integer> iter = tm.keySet().iterator();
-				for( int j = 0; iter.hasNext() && j <TopK; ){
-				    int keyCount = iter.next();
-				    List<String> words = tm.get(keyCount);
-				    for (int i = 0; i < words.size() && j < TopK; i++, j++){
+				int count = Integer.parseInt(value.split(" ")[1].trim());
+				if (!tm.containsKey(count)) {
+					tm.put(count, new ArrayList<String>());
+				}
+				tm.get(count).add(word);
+			}
+			Iterator<Integer> iter = tm.keySet().iterator();
+			for( int j = 0; iter.hasNext() && j <TopK; ){
+				int keyCount = iter.next();
+				List<String> words = tm.get(keyCount);
+				for (int i = 0; i < words.size() && j < TopK; i++, j++){
 //				        key=sb.toString().trim();
-                        context.write(new DBOutputWritable(key.toString(),words.get(i),keyCount),NullWritable.get());
-                    }
-
-                }
+					context.write(new DBOutputWritable(key.toString(),words.get(i),keyCount),NullWritable.get());
+				}
 			}
 		}
 	}

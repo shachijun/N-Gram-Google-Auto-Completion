@@ -5,20 +5,19 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Mapper.Context;
 import org.apache.hadoop.mapreduce.Reducer;
-
 import java.io.IOException;
 
 public class NGramLibraryBuilder {
 	public static class NGramMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
-
 		int noGram;
 		@Override
 		public void setup(Context context) {
 			Configuration conf = context.getConfiguration();
-			noGram=conf.getInt("noGram", 5);
+			noGram=conf.getInt("noGram", 5); // this set before, like a key set in Driver
 		}
 		@Override
 		public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+			// read sentence, and split
 			String line = value.toString();
 			line = line.trim().toLowerCase().replaceAll("[^a-z]"," ");
 			String worlds[] = line.split("\\s+");

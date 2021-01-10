@@ -40,18 +40,18 @@ public class Driver {
 		Configuration conf2 = new Configuration();
 		conf2.set("threashold", args[3]);
 		conf2.set("TopK", args[4]);
-		
-		DBConfiguration.configureDB(conf2, 
+
+		DBConfiguration.configureDB(conf2,
 				"com.mysql.jdbc.Driver",
-				"jdbc:mysql://172.31.195.225:8889/N_Gram",
+				"jdbc:mysql://192.168.86.65:8889/test",
 				"root",
-				"Shacj626");
+				"root");
 		
 		Job job2 = Job.getInstance(conf2);
 		job2.setJobName("Model");
 		job2.setJarByClass(Driver.class);
-		
-		job2.addArchiveToClassPath(new Path("/mysql/mysql-connector-java-5.1.39-bin.jar"));
+
+		job2.addArchiveToClassPath(new Path("/mysql/mysql-connector-java-5.1.30-bin.jar"));
 		//mapper reducer outputkey are different
 		job2.setMapOutputKeyClass(Text.class);
 		job2.setMapOutputValueClass(Text.class);
@@ -70,5 +70,4 @@ public class Driver {
 		TextInputFormat.setInputPaths(job2, args[1]);
 		job2.waitForCompletion(true);
 	}
-
 }
