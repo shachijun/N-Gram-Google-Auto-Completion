@@ -67,7 +67,7 @@ public class Driver {
 		DBOutputFormat.setOutput(job2, "output", 
 				new String[] {"starting_phrase", "following_word", "count"});
 
-		TextInputFormat.setInputPaths(job2, args[1]);
+		TextInputFormat.setInputPaths(job2, new Path(args[1]));
 		job2.waitForCompletion(true);
 	}
 }
